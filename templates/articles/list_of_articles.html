@@ -14,7 +14,7 @@
     {% if latest_article_list %}
         {% for a in latest_article_list%}
 
-                <img src="https://127.0.0.1:8001/media/articles/4RNJB_naXQo.jpg" />
+                <img src="{{MEDIA_URL}}{{a.article_image}}" />
                 <a href = "#">{{a.article_name}}</a>
 
         {% endfor %}
