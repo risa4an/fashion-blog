@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="article_list.css">
+</head>
+
+{% block title %}Последние статьи{% endblock %}
+
+{% block content %}
+    <h1 align="center">VOK</h1>
+
+    {% if latest_article_list %}
+        {% for a in latest_article_list%}
+
+                <img src="https://127.0.0.1:8001/media/articles/4RNJB_naXQo.jpg" />
+                <a href = "#">{{a.article_name}}</a>
+
+        {% endfor %}
+
+
+    {% else %}
+        <p>Cтатей еще нет</p>
+    {% endif %}
+{% endblock %}
