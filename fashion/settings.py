@@ -38,6 +38,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts',
+    'crispy_forms',
     'articles.apps.ArticlesConfig',
     'photographers.apps.PhotographersConfig',
     'django.contrib.admin',
@@ -109,7 +111,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+STATICFILES_DIRS = [
 
+    os.path.join(BASE_DIR, 'static'),
+
+]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+LOGIN_REDIRECT_URL =  '/articles'
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -126,6 +135,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
 STATIC_URL = '/static/'
-MEDIA_URL = '/Users/katerina/Documents/Django/fashion/media/'
+MEDIA_URL = '/media/'
+

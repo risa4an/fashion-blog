@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+
+
+    {% block title %}Коллекции{% endblock %}
+
+{% block content %}
+<div class="page-header">
+
+
+    {% if request.user.is_authenticated %}
+        <p align="center"> <a href="{% url 'photographers:add_album'  %}" class="top-menu"> Добавить альбом </a></p>
+    {% endif %}
+</div>
+
+    {% if photographers_list %}
+        {% for c in photographers_list %}
+            <a  style="color: #ff9400" href = "{% url 'photographers:detail' c.id %}">{{ c.name }}</a>
+            <h4 style="color: #828282">{{ c.discription }}</h4>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+
+</html>

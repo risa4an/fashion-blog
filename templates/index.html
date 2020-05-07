@@ -1,12 +1,19 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}VOK{% endblock %}</title>
-    <link rel="stylesheet" href="articles/article_list.css">
+    <title>{% block title %}FreshMan{% endblock %}</title>
+
 </head>
 <body>
-
+    <p align="left"><a href="/articles/">Статьи</a>  <a href="/photographers/">Коллекции</a>
+    {% if request.user.is_authenticated %}
+    <p align="right"> <a href = "/logout/" >Log out</a> </p>
+    {% else %}
+    <p align = "right>"> <a href = "/">Log in</a>  <a href="/register/">Register</a></p>
+    {% endif %}
+    <h1 align="center">FreshMan</h1>
     {% block content %} {% endblock %}
 
 

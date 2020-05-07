@@ -6,7 +6,7 @@ from django.db import models
 class Article(models.Model):
     article_name = models.CharField( max_length= 100)
     article_text = models.TextField()
-    article_image = models.ImageField(upload_to='articles/', blank=True, null=True)
+    article_image = models.TextField()
     article_date = models.DateTimeField()
     article_author = models.CharField( max_length = 50)
 

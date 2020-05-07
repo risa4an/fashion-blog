@@ -3,21 +3,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="article_list.css">
+    <link rel="stylesheet" type = "text/css" href="../listofarticles.css">
 </head>
 
 {% block title %}Последние статьи{% endblock %}
 
 {% block content %}
-    <h1 align="center">VOK</h1>
+
 
     {% if latest_article_list %}
-        {% for a in latest_article_list%}
-
-                <img src="{{MEDIA_URL}}{{a.article_image}}" />
-                <a href = "#">{{a.article_name}}</a>
-
-        {% endfor %}
+        <div class = "article-row">
+            {% for a in latest_article_list %}
+                <div class = "article-row">
+                <figure>
+                    <img src="{{a.article_image }}"  height="100"/>
+                    <a href="{% url 'articles:detail' a.id %}" >{{ a.article_name }}</a>
+                </figure>
+            {% endfor %}
+                </div>
 
 
     {% else %}

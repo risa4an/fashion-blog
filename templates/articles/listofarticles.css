@@ -1,0 +1,32 @@
+body {
+    font-family : Vogue;
+    color: antiquewhite;
+    font-style: italic;
+
+}
+a{
+    font-style: italic;
+}
+
+figure figcaption {
+	font-size: 16px;
+	font-weight: 300;
+	margin-top: 5px;
+}
+
+figure div {
+	font-size: 14px;
+	color: #29c5e6;
+}
+
+.team-row figure {
+	margin-top: 20px;
+}
+
+.team-row figure + figure {
+	margin-left: 43px;
+}
+img{
+    width: 100px;
+    height: 100px;
+}
