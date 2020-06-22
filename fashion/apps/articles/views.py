@@ -6,6 +6,7 @@ import datetime
 from .models import Article,Comment
 from django.urls import reverse
 from django.contrib import auth
+from .forms import PostForm
 
 def index(request):
     latest_article_list = Article.objects.all().order_by('-id')[:5]
@@ -17,23 +18,16 @@ def detail(request, article_id):
     except:
         raise Http404("Такую статью еще не написали)")
     latest_comments = a.comment_set.all().order_by('-id')[:10]
-    return render(request,'articles/detail.html', {'article' : a, 'latest_comments' : latest_comments})
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid() and request.user.is_authenticated:
+            post = form.save(commit=False)
+            post.comment_article = a
+            post.comment_author = auth.get_user(request)
+            post.comment_data = datetime.datetime.now()
+            post.save()
+            return HttpResponseRedirect(reverse('articles:detail', args=[article_id] ))
+    else:
+        form = PostForm()
+    return render(request, 'articles/detail.html', {'article': a, 'latest_comments': latest_comments, 'form':form})
 
-@csrf_protect
-@login_required
-def leave_comment(request, article_id):
-    try:
-        a = Article.objects.get(id = article_id)
-    except:
-        raise Http404("Такую статью еще не написали)")
-
-    if request.user.is_authenticated:
-        comment = Comment()
-        comment.comment_article = a
-        comment.comment_author = auth.get_user(request)
-        comment.comment_text = request.POST['text']
-        comment.comment_data = datetime.datetime.now()
-        comment.save()
-
-
-    return HttpResponseRedirect(reverse('articles:detail', args = (a.id,)) )

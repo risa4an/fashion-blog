@@ -20,11 +20,11 @@
     {% endif %}
 
     <hr>
+
     {% if request.user.is_authenticated %}
-    <form action = "{% url 'articles:leave_comment' article.id %}" method="POST">
-        {% csrf_token %}
-        <textarea name= "text" required="" placeholder="Текст комментария" cols="30" rows="10"></textarea><br>
-        <button type="submit">Оставить комментарий</button>
+        <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Оставить комментарий</button>
     </form>
         {% else %}
         <p>Только авторизированные пользователи могут комментировать статьи</p>

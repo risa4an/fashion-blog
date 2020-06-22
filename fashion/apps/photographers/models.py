@@ -9,6 +9,8 @@ class Photographer(models.Model):
     name = models.CharField(max_length=50)
     discription = models.TextField()
 
+    def __str__(self):
+        return self.name
 
 class Photo(models.Model):
     photo_album = models.ForeignKey(Photographer, on_delete=models.CASCADE)
@@ -16,3 +18,5 @@ class Photo(models.Model):
     photo_image = models.TextField()
     photo_name = models.CharField(max_length=100)
 
+    def __str__(self):
+        return (self.photo_name)

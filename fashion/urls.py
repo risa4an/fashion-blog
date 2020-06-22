@@ -23,7 +23,7 @@ from fashion.apps.accounts import views
 
 urlpatterns = [
 
-    path('articles/', include('articles.urls')),
+    path('articles/', include('articles.urls'), name = 'home'),
     path('admin/', admin.site.urls),
     path('', include('accounts.urls')),
     path('photographers/', include('photographers.urls'))

@@ -16,7 +16,7 @@
             {% for a in latest_article_list %}
                 <div class = "article-row">
                 <figure>
-                    <img src="{{a.article_image }}"  height="100"/>
+                    <img src="{{ a.article_image }}"  height="100"/>
                     <a href="{% url 'articles:detail' a.id %}" >{{ a.article_name }}</a>
                 </figure>
             {% endfor %}
