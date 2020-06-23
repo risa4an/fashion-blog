@@ -71,11 +71,10 @@ def test_activate_view(auto_login_user):
 def test_form_signup(client):
     data = {'username' : 'Ekatekage', 'email':'katya.risunova@gmail.com', 'password1':'helloitsme',  'password2':'helloitsme'}
     url = reverse('accounts:register')
-    # usr = User.objects.create_user('Ekatekage', 'helloitsme')
-    # client.login(username=usr.username, password='helloitsme')
+
     response = client.post(url, data)
     usr = User.objects.get(username='Ekatekage')
-    # client.login(username=usr.username, password='helloitsme')
+
     uid = urlsafe_base64_encode(force_bytes(usr.pk))
     token = account_activation_token.make_token(usr)
     url2 = reverse('accounts:activate', args=[uid, token])

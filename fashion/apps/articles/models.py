@@ -16,7 +16,7 @@ class Article(models.Model):
 
     class Meta:
         indexes = [
-            models.Index(fields=['article_name', 'article_date']),
+            models.Index(fields=['article_date']),
         ]
 
     # @property
