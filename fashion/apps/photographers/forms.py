@@ -1,5 +1,4 @@
 from django import forms
-
 from .models import Photographer, Photo
 
 class PostForm(forms.ModelForm):

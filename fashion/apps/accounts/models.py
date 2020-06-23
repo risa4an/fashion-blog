@@ -6,7 +6,9 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
-class Profile(models.Model):
+
+
+class Account(models.Model):
     user = models.OneToOneField(User, on_delete =models.CASCADE)
     verification = models.BooleanField(default=False)
 
@@ -16,6 +18,6 @@ class Profile(models.Model):
 @receiver(post_save, sender=User)
 def update_profile_signal(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(user=instance)
-    instance.profile.save()
+        Account.objects.create(user=instance)
+    instance.account.save()
 

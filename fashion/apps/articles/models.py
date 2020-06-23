@@ -14,6 +14,11 @@ class Article(models.Model):
     def __str__(self):
         return self.article_name
 
+    class Meta:
+        indexes = [
+            models.Index(fields=['article_name', 'article_date']),
+        ]
+
     # @property
     # def image_url(self):
     #     if self.article_image and hasattr(self.article_image, 'url'):
@@ -28,3 +33,4 @@ class Comment(models.Model):
 
     def __str__(self):
         return str(self.comment_text)
+

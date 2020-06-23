@@ -12,6 +12,11 @@ class Photographer(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        indexes = [
+            models.Index(fields=['photographer']),
+        ]
+
 class Photo(models.Model):
     photo_album = models.ForeignKey(Photographer, on_delete=models.CASCADE)
     #photo_image = models.ImageField(upload_to='media', blank=True)
